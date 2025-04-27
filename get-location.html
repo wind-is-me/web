@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Location and Redirect</title>
+    <script>
+        function getLocationAndRedirect() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // Sau khi lấy tọa độ, bạn có thể xử lý tọa độ nếu cần
+                    console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+
+                    // Sau khi lấy tọa độ, chuyển hướng người dùng
+                    window.location.href = "https://www.example.com"; // Thay đổi URL theo ý muốn
+                }, function(error) {
+                    alert("Không thể lấy tọa độ của bạn: " + error.message);
+                });
+            } else {
+                alert("Trình duyệt của bạn không hỗ trợ chức năng lấy tọa độ.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getLocationAndRedirect()">Nhấn để lấy tọa độ và chuyển hướng</button>
+</body>
+</html>
